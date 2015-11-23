@@ -1,0 +1,76 @@
+<!-- compare pokemon here -->
+
+<div class="row">
+
+
+    <div class="col-sm-6">
+        <h2>1. {{pokemon1.name}}
+            <small> - #{{pokemon1.national_id}}</small>
+        </h2>
+
+        <div ng-repeat="sprite1 in sprites1">
+            <img src="{{apiUri + sprite1}}" alt="pokemon-sprite">
+        </div>
+
+        <p>{{description1.description}}</p>
+
+
+    </div>
+
+
+    <div class="col-sm-6 compare-page-zone-two">
+        <h2>2. {{pokemon2.name}}
+            <small> - #{{pokemon2.national_id}}</small>
+        </h2>
+
+        <div ng-repeat="sprite2 in sprites2">
+            <img src="{{apiUri + sprite2}}" alt="pokemon-sprite">
+        </div>
+
+        <p>{{description2.description}}</p>
+
+
+
+    </div>
+
+
+</div>
+
+        <hr>
+
+<div class="row">
+    <div class="col-sm-6">
+        <p>Abilities:</p>
+        <ul>
+            <li ng-repeat="ability in pokemon1.abilities">{{ability.name}}</li>
+        </ul>
+
+        <p>Types:</p>
+        <ul>
+            <li ng-repeat="type in pokemon1.types">{{type.name}}</li>
+        </ul>
+
+        <p>Evolutions:</p>
+        <ul>
+            <li ng-repeat="evolution in pokemon1.evolutions"><a href="#/pokemon?resource={{evolution.resource_uri}}">{{evolution.to}}</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-6 compare-page-zone-two">
+        <p>Abilities:</p>
+        <ul>
+            <li ng-repeat="ability in pokemon2.abilities">{{ability.name}}</li>
+        </ul>
+
+        <p>Types:</p>
+        <ul>
+            <li ng-repeat="type in pokemon2.types">{{type.name}}</li>
+        </ul>
+
+        <p>Evolutions:</p>
+        <ul>
+            <li ng-repeat="evolution in pokemon2.evolutions"><a href="#/pokemon?resource={{evolution.resource_uri}}">{{evolution.to}}</a></li>
+        </ul>
+
+    </div>
+</div>
+

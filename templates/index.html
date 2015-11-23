@@ -1,0 +1,121 @@
+<div ng-controller="PokemonListController">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-inline">
+
+                <label for="p-search">Search:
+                    <input id="p-search" type="text" ng-model="query" autofocus class="form-control"> </label>
+                <button class="btn btn-primary" ng-click="query = ''">Reset</button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="row">
+
+        <div class="col-md-9 col-sm-8 col-xs-12">
+
+
+            <ul class="list-group">
+                <li class="p-card list-group-item col-md-2 col-sm-3 col-xs-12"
+                        ng-repeat="pokemon in pokemonList | filter: query"
+                        data-drop="true"
+                        ng-model="pokemonList"
+                        data-jqyoui-options="{accept:'li:not([ng-model=pokemonList])'}"
+                        jqyoui-droppable="{index: {{$index}}}"
+                        >
+
+
+                    <a href="#/pokemon?resource={{pokemon.pokemon.resource_uri}}"
+                            data-drag="true"
+                            data-jqyoui-options="{revert: 'invalid'}"
+                            ng-model="pokemonList"
+                            jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}"
+                            ng-hide="!pokemon.pokemon.name"
+
+                            >
+                        <span class="p-name">{{ pokemon.pokemon.name }}</span><br>
+                        <img ng-src="{{apiUri + pokemon.image}}" alt="pokemon-image" class="p-image">
+                    </a>
+
+
+                </li>
+            </ul>
+
+
+        </div>
+
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <div class="compare-pokemon">
+                <p>Compare Pokemon:</p>
+
+                <!-- Pokemon 1 -->
+                <div class="thumbnail">
+                    <ol class="comparison-zone"
+                            data-drop="true"
+                            data-jqyoui-options
+                            ng-model='comparePokemonOne'
+                            jqyoui-droppable>
+
+
+                        <li
+                                data-drag="true"
+                                ng-model="comparePokemonOne"
+                                data-jqyoui-options="{revert: 'invalid'}"
+                                jqyoui-draggable="{animate:true}"
+                                ng-hide="!comparePokemonOne.pokemon.name"
+                                >
+
+                            <span class="p-name">{{ comparePokemonOne.pokemon.name }}</span><br>
+                            <img ng-src="{{apiUri + comparePokemonOne.image}}" alt="pokemon-image" class="p-image">
+
+                        </li>
+
+                    </ol>
+                </div>
+
+                <p>vs.</p>
+
+                <!-- Pokemon 2 -->
+                <div class="thumbnail">
+                    <ol start="2"
+                            class="comparison-zone"
+                            data-drop="true"
+                            data-jqyoui-options
+                            ng-model='comparePokemonTwo'
+                            jqyoui-droppable>
+
+
+                        <li
+                                data-drag="true"
+                                ng-model="comparePokemonTwo"
+                                data-jqyoui-options
+                                jqyoui-draggable="{animate:true}"
+                                ng-hide="!comparePokemonTwo.pokemon.name"
+                                >
+
+                            <span class="p-name">{{ comparePokemonTwo.pokemon.name }}</span><br>
+                            <img ng-src="{{apiUri + comparePokemonTwo.image}}" alt="pokemon-image" class="p-image">
+
+                        </li>
+
+                    </ol>
+                </div>
+
+
+                <a class="btn btn-primary pull-right" href="/#/comparison?resource1={{comparePokemonOne.pokemon.resource_uri}}&resource2={{comparePokemonTwo.pokemon.resource_uri}}">Compare</a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+

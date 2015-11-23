@@ -1,0 +1,1 @@
+Pokedex built in AngularJS with search and compare features using pokeAPI
