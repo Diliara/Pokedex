@@ -27,7 +27,7 @@
                         data-drop="true"
                         ng-model="pokemonList"
                         data-jqyoui-options="{accept:'li:not([ng-model=pokemonList])'}"
-                        jqyoui-droppable="{index: {{$index}}}"
+                        jqyoui-droppable="{index: pokemonList.indexOf(pokemon)}"
                         >
 
 
@@ -35,7 +35,7 @@
                             data-drag="true"
                             data-jqyoui-options="{revert: 'invalid'}"
                             ng-model="pokemonList"
-                            jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}"
+                            jqyoui-draggable="{index: pokemonList.indexOf(pokemon),placeholder:true,animate:true}"
                             ng-hide="!pokemon.pokemon.name"
 
                             >
